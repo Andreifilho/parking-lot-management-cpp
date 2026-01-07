@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+
+const int NUM_ROWS = 5;
+const int NUM_COLS = 10;
+
+int main() {
+    int parkingLot[NUM_ROWS][NUM_COLS] = {0};
+
+    parkingLot[0][0] = 1;
+    parkingLot[2][5] = 1;
+    parkingLot[4][9] = 1;
+
+    cout << "Parking Lot Layout:\n";
+    for (int i = 0; i < NUM_ROWS; i++) {
+        for (int j = 0; j < NUM_COLS; j++) {
+            cout << parkingLot[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    int totalSpots = NUM_ROWS * NUM_COLS;
+    int occupiedCount = 0;
+
+    for (int row = 0; row < NUM_ROWS; row++) {
+        for (int col = 0; col < NUM_COLS; col++) {
+            if (parkingLot[row][col] == 1) {
+                occupiedCount++;
+            }
+        }
+    }
+
+    int freeCount = totalSpots - occupiedCount;
+    cout << "\nTotal spots: " << totalSpots << endl;
+    cout << "Occupied spots: " << occupiedCount << endl;
+    cout << "Free spots: " << freeCount << endl;
+
+    cout << "\nFree spot locations:\n";
+    for (int r = 0; r < NUM_ROWS; r++) {
+        for (int c = 0; c < NUM_COLS; c++) {
+            if (parkingLot[r][c] == 0) {
+                cout << "Row " << r << ", Column " << c << endl;
+            }
+        }
+    }
+
+    return 0;
+}
